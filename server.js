@@ -42,6 +42,12 @@ app.get('/',(req,res)=>{
     });
 });
 
+app.get('/projects',(req,res)=>{
+    res.render('projects.hbs',{
+        pageTitle:'Projects',
+    });
+});
+
 // /bad - send back json with errorMessage
 app.get('/bad', (req, res) => {
     res.send({
@@ -51,7 +57,7 @@ app.get('/bad', (req, res) => {
 
 app.get('/about',(req,res)=>{
     res.render('about.hbs',{
-        pageTitle:'About Pate Title',
+        pageTitle:'About Page',
         currentYear:new Date().getFullYear()
     }); 
 });
