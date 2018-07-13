@@ -1,6 +1,8 @@
 const express = require('express');
 const hbs = require('hbs');
 const fs = require('fs');
+const port = process.env.PORT || 3000;
+
 var app = express();
 
 app.use(express.static(__dirname+'/public/'));
@@ -14,9 +16,7 @@ hbs.registerHelper('getCurrentYear',()=>{
 hbs.registerHelper('screamIt',(text)=>{
     return text.toUpperCase();
 });
-
-//testtt
-
+ 
 app.use((req,res,next)=>{
     var now = new Date().toString();
     var log = `${now}:${req.method} ${req.url}`;
@@ -41,10 +41,9 @@ app.get('/about',(req,res)=>{
     res.render('about.hbs',{
         pageTitle:'About Pate Title',
         currentYear:new Date().getFullYear()
-    });
-    //res.send('<h1>About page</h1>');
+    }); 
 });
 
-app.listen(3000,(msg)=>{
-    console.log('Server is up',msg);
+app.listen(port,()=>{
+    console.log(`Server is up on port ${port}`);
 });
