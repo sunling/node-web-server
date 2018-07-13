@@ -17,11 +17,11 @@ hbs.registerHelper('screamIt',(text)=>{
     return text.toUpperCase();
 });
 
-app.use((req,res,next)=>{
-    res.render('maintenance.hbs',{
-        pageTitle:'Maintenance Page'
-    });
-});
+// app.use((req,res,next)=>{
+//     res.render('maintenance.hbs',{
+//         pageTitle:'Maintenance Page'
+//     });
+// });
  
 app.use((req,res,next)=>{
     var now = new Date().toString();
@@ -37,11 +37,17 @@ app.use((req,res,next)=>{
 
 app.get('/',(req,res)=>{
     res.render('home.hbs',{
-        pageTitle:'Home Page',
-        currentYear:new Date().getFullYear(),
+        pageTitle:'Home Page', 
         welcomeMsg:'Welcome to Node.js world'
     });
 });
+
+// /bad - send back json with errorMessage
+app.get('/bad', (req, res) => {
+    res.send({
+      errorMessage: 'Unable to handle request'
+    });
+  });
 
 app.get('/about',(req,res)=>{
     res.render('about.hbs',{
