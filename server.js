@@ -18,7 +18,9 @@ hbs.registerHelper('screamIt',(text)=>{
 });
 
 app.use((req,res,next)=>{
-    res.render('maintains.hbs');
+    res.render('maintenance.hbs',{
+        pageTitle:'Maintenance Page'
+    });
 });
  
 app.use((req,res,next)=>{
